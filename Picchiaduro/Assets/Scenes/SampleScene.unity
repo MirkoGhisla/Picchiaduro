@@ -1056,7 +1056,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100266, guid: 27e3c549033357241839f93f716e98b3, type: 3}
       propertyPath: m_Name
-      value: MaleCharacterAnimation
+      value: Giocatore1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100266, guid: 27e3c549033357241839f93f716e98b3, type: 3}
+      propertyPath: m_TagString
+      value: G1
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 27e3c549033357241839f93f716e98b3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7165,11 +7169,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100266, guid: 27e3c549033357241839f93f716e98b3, type: 3}
       propertyPath: m_Name
-      value: MaleCharacterAnimation (2)
+      value: Giocatore2
       objectReference: {fileID: 0}
-    - target: {fileID: 100264, guid: 27e3c549033357241839f93f716e98b3, type: 3}
-      propertyPath: m_Name
-      value: MaleBase
+    - target: {fileID: 100266, guid: 27e3c549033357241839f93f716e98b3, type: 3}
+      propertyPath: m_TagString
+      value: G2
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 27e3c549033357241839f93f716e98b3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -12627,5 +12631,9 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2a4f4dfe2a5b914391f1abffb698780, type: 2}
+    - target: {fileID: 100264, guid: 27e3c549033357241839f93f716e98b3, type: 3}
+      propertyPath: m_Name
+      value: MaleBase
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e3c549033357241839f93f716e98b3, type: 3}
