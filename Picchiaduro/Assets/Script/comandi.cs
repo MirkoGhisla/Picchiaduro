@@ -9,6 +9,7 @@ public class comandi : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
+    int corre = Animator.StringToHash("corre");
 
     void Start()
     {
@@ -20,14 +21,20 @@ public class comandi : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.D))
         {
-                transform.Translate(0, 0, +0.7f);
-            
-        }
+
+            anim.SetBool("corre", true);
+            transform.Translate(new Vector3(+0.7f, 0, 0), Space.World);
+        } else if(Input.GetKeyUp(KeyCode.D))
+            anim.SetBool("corre", false);
 
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Translate(0, 0, -0.7f);
-        }
+
+            anim.SetBool("corre", true);
+            transform.Translate(new Vector3(-0.7f, 0, 0), Space.World);            
+        }else if (Input.GetKeyUp(KeyCode.A))
+            anim.SetBool("corre", false);
+
 
         if (Input.GetKeyDown(KeyCode.V))
             anim.SetTrigger(pugno);
@@ -39,7 +46,4 @@ public class comandi : MonoBehaviour
             anim.SetTrigger(salto);
 
     }
-
-
-
 }
