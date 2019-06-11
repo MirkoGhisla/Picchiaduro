@@ -11,9 +11,16 @@ public class collisione : MonoBehaviour
 
         if (collision.collider.GetType().ToString() == "UnityEngine.SphereCollider")
         {
+            if (tag == "G1")
+            {
+                vite.G1currentHealth -= 100;
+            }
 
+            if (tag == "G2")
+            {
+                vite.G2currentHealth -= 100;
+            }
 
-        
         }
 
     }
