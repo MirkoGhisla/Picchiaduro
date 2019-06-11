@@ -9,8 +9,7 @@ public class comandiG1 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
-    int corre = Animator.StringToHash("corre");
-
+   
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -20,38 +19,43 @@ public class comandiG1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
+            if (Input.GetKey(KeyCode.D))
+            {
+                anim.SetBool("corre", true);
+                transform.Translate(0, 0, +0.7f);
 
-            anim.SetBool("corre", true);
-            transform.Translate(0, 0, +0.7f);
-        } else if(Input.GetKeyUp(KeyCode.D))
-            anim.SetBool("corre", false);
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+                anim.SetBool("corre", false);
 
-        if (Input.GetKey(KeyCode.A))
-        {
+            if (Input.GetKey(KeyCode.A))
+            {
+                anim.SetBool("corre", true);
+                transform.Translate(0, 0, -0.7f);
 
-            anim.SetBool("corre", true);
-            transform.Translate(0, 0, -0.7f);            
-        }else if (Input.GetKeyUp(KeyCode.A))
-            anim.SetBool("corre", false);
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+                anim.SetBool("corre", false);
 
 
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            anim.SetTrigger(pugno);
-            GetComponent<SphereCollider>().enabled = true;
-            StartCoroutine(aspetta());
+
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                anim.SetTrigger(pugno);
+                GetComponent<SphereCollider>().enabled = true;
+                StartCoroutine(aspetta());
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                anim.SetTrigger(calcio);
+                GetComponent<SphereCollider>().enabled = true;
+                StartCoroutine(aspetta());
+            }
+            if (Input.GetKeyDown(KeyCode.W))
+                anim.SetTrigger(salto);
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            anim.SetTrigger(calcio);
-            GetComponent<SphereCollider>().enabled = true;
-            StartCoroutine(aspetta());
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-            anim.SetTrigger(salto);
-
     }
 
     IEnumerator aspetta()
