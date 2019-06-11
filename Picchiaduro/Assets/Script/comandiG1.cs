@@ -9,7 +9,7 @@ public class comandiG1 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
-   
+    public GameObject target;   
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -19,12 +19,15 @@ public class comandiG1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.LookAt(target.transform);
+
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
+
             if (Input.GetKey(KeyCode.D))
             {
                 anim.SetBool("corre", true);
-                transform.Translate(0, 0, +0.7f);
+                transform.Translate(0, 0, +0.9f);
 
             }
             else if (Input.GetKeyUp(KeyCode.D))
@@ -33,7 +36,7 @@ public class comandiG1 : MonoBehaviour
             if (Input.GetKey(KeyCode.A))
             {
                 anim.SetBool("corre", true);
-                transform.Translate(0, 0, -0.7f);
+                transform.Translate(0, 0, -0.9f);
 
             }
             else if (Input.GetKeyUp(KeyCode.A))
