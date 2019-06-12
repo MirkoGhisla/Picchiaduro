@@ -5,20 +5,20 @@ using System.Collections.Generic;
 // Contains basic setup and common functions used by all the player behaviours.
 public class BasicBehaviour : MonoBehaviour
 {
-	public Transform playerCamera;                        // Reference to the camera that focus the player.
-	public float turnSmoothing = 0.06f;                   // Speed of turn when moving to match camera facing.
-	public float sprintFOV = 100f;                        // the FOV to use on the camera when player is sprinting.
-	public string sprintButton = "Sprint";                // Default sprint button input name.
+    public Transform playerCamera;                        // Reference to the camera that focus the player.
+    public float turnSmoothing = 0.06f;                   // Speed of turn when moving to match camera facing.
+    public float sprintFOV = 100f;                        // the FOV to use on the camera when player is sprinting.
+    public string sprintButton = "Sprint";                // Default sprint button input name.
 
-	private float h;                                      // Horizontal Axis.
-	private float v;                                      // Vertical Axis.
-	private int currentBehaviour;                         // Reference to the current player behaviour.
-	private int defaultBehaviour;                         // The default behaviour of the player when any other is not active.
-	private int behaviourLocked;                          // Reference to temporary locked behaviour that forbids override.
-	private Vector3 lastDirection;                        // Last direction the player was moving.
-	private Animator anim;                                // Reference to the Animator component.
-	private ThirdPersonOrbitCamBasic camScript;                // Reference to the third person camera script.
-	private bool sprint;                                  // Boolean to determine whether or not the player activated the sprint mode.
+    private float h;                                      // Horizontal Axis.
+    private float v;                                      // Vertical Axis.
+    private int currentBehaviour;                         // Reference to the current player behaviour.
+    private int defaultBehaviour;                         // The default behaviour of the player when any other is not active.
+    private int behaviourLocked;                          // Reference to temporary locked behaviour that forbids override.
+    private Vector3 lastDirection;                        // Last direction the player was moving.
+    private Animator anim;                                // Reference to the Animator component.
+    private ThirdPersonOrbitCamBasic camScript;                // Reference to the third person camera script.
+    private bool sprint;                                  // Boolean to determine whether or not the player activated the sprint mode.
 	private bool changedFOV;                              // Boolean to store when the sprint action has changed de camera FOV.
 	private int hFloat;                                   // Animator variable related to Horizontal Axis.
 	private int vFloat;                                   // Animator variable related to Vertical Axis.
