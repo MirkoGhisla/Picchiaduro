@@ -19,7 +19,7 @@ public class comandiG1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(target.transform);
+       
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
