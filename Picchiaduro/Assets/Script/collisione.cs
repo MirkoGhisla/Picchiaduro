@@ -13,15 +13,31 @@ public class collisione : MonoBehaviour
         {
             if (tag == "G1")
             {
+                comandiG1.colpito = true;
                 vite.G1currentHealth -= 100;
+                StartCoroutine(G1nonColpito());
             }
 
             if (tag == "G2")
             {
+                comandiG2.colpito = true;
                 vite.G2currentHealth -= 100;
+                StartCoroutine(G2nonColpito());
             }
 
         }
 
+    }
+
+    IEnumerator G1nonColpito()
+    {
+        yield return new WaitForSeconds(0.5f);
+        comandiG1.colpito = false;
+    }
+
+    IEnumerator G2nonColpito()
+    {
+        yield return new WaitForSeconds(0.5f);
+        comandiG2.colpito = false;
     }
 }
