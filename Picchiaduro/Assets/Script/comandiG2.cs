@@ -37,12 +37,12 @@ public class comandiG2 : MonoBehaviour
 
             if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
             {
-                anim.SetBool("corre", true);
+                anim.SetBool("parata", true);
                 transform.Translate(0, 0, -0.9f);
 
             }
             else if (Input.GetKeyUp(KeyCode.RightArrow))
-                anim.SetBool("corre", false);
+                anim.SetBool("parata", false);
 
             if (!colpito)
             {
@@ -62,7 +62,12 @@ public class comandiG2 : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
                 anim.SetTrigger(salto);
+                for(int i=1; i<20; i++)
+                    transform.Translate(0, i, 0);
+            }
+                
         }
 
     }
