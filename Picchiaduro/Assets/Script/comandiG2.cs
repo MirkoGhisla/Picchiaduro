@@ -14,6 +14,7 @@ public class comandiG2 : MonoBehaviour
 
     bool stoColpendo = false;
     public static bool colpito = false;
+    bool isGrounded = true;
 
     void Start()
     {
@@ -63,11 +64,17 @@ public class comandiG2 : MonoBehaviour
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow)&&isGrounded)
             {
+                isGrounded = false;
                 JumpManagement();
             }
                 
+        }
+
+        if (transform.position.y <= 2.8050)
+        {
+            isGrounded = true;
         }
 
     }

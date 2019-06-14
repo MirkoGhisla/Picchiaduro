@@ -15,6 +15,7 @@ public class comandiG1 : MonoBehaviour
 
     bool stoColpendo = false;
     public static bool colpito = false;
+    bool isGrounded = true;
 
     void Start()
     {
@@ -64,8 +65,16 @@ public class comandiG1 : MonoBehaviour
                     stoColpendo = true;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.W))
-                JumpManagement();
+            if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+            {
+                isGrounded = false;
+                JumpManagement();     
+            }
+        }
+
+        if(transform.position.y<= 2.8050)
+        {
+            isGrounded = true;
         }
     }
 
@@ -124,6 +133,7 @@ public class comandiG1 : MonoBehaviour
             // Set jump related parameters.
             //jump = false;
             anim.SetBool(salto, false);
+
             //behaviourManager.UnlockTempBehaviour(this.behaviourCode);
         }
         //}
