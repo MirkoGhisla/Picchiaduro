@@ -104,7 +104,7 @@ public class comandiG2 : MonoBehaviour
         horizontalVelocity.y = 0;
         rigidBody.velocity = horizontalVelocity;
         // Set jump vertical impulse velocity.
-        float velocity = 2f * Mathf.Abs(Physics.gravity.y) * altezzaSalto;
+        float velocity = 4f * Mathf.Abs(Physics.gravity.y) * altezzaSalto;
         velocity = Mathf.Sqrt(velocity);
         rigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
         //}
