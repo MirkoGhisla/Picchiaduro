@@ -13,9 +13,14 @@ public class collisione : MonoBehaviour
         {
             if (tag == "G1")
             {
-                comandiG1.colpito = true;
-                vite.G1currentHealth -= 100;
-                StartCoroutine(G1nonColpito());
+                if (GetComponent<Animator>().GetBool("parata"))
+                    vite.G1currentHealth = vite.G1currentHealth;
+                else
+                {
+                    comandiG1.colpito = true;
+                    vite.G1currentHealth -= 100;
+                    StartCoroutine(G1nonColpito());
+                }
             }
 
             if (tag == "G2")

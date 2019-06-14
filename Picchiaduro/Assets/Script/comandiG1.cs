@@ -41,12 +41,12 @@ public class comandiG1 : MonoBehaviour
 
             if (Input.GetKey(KeyCode.A) && !stoColpendo)
             {
-                anim.SetBool("corre", true);
+                anim.SetBool("parata", true);
                 transform.Translate(0, 0, -1.3f);
 
             }
             else if (Input.GetKeyUp(KeyCode.A))
-                anim.SetBool("corre", false);
+                anim.SetBool("parata", false);
 
 
             if (!colpito)
