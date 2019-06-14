@@ -8,6 +8,8 @@ public class comandiG2 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
+
+    public float altezzaSalto = 1.5f;
     public GameObject target;
 
     bool stoColpendo = false;
@@ -63,9 +65,7 @@ public class comandiG2 : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                anim.SetTrigger(salto);
-                for(int i=1; i<20; i++)
-                    transform.Translate(0, i, 0);
+                JumpManagement();
             }
                 
         }
@@ -82,6 +82,62 @@ public class comandiG2 : MonoBehaviour
         stoColpendo = false;
     }
 
+    void JumpManagement()
+    {
 
+        Rigidbody rigidBody = GetComponent<Rigidbody>();
+        // Start a new jump.
 
+        // Set jump related parameters.
+        //behaviourManager.LockTempBehaviour(this.behaviourCode);
+        //behaviourManager.GetAnim.SetBool(salto, true);
+        // Is a locomotion jump?
+        //if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
+        //{
+        // Temporarily change player friction to pass through obstacles.
+        anim.SetBool("salto", true);
+        GetComponent<BoxCollider>().material.dynamicFriction = 0f;
+        GetComponent<BoxCollider>().material.staticFriction = 0f;
+        // Remove vertical velocity to avoid "super jumps" on slope ends.
+        //RemoveVedrticalVelocity();
+        Vector3 horizontalVelocity = rigidBody.velocity;
+        horizontalVelocity.y = 0;
+        rigidBody.velocity = horizontalVelocity;
+        // Set jump vertical impulse velocity.
+        float velocity = 2f * Mathf.Abs(Physics.gravity.y) * altezzaSalto;
+        velocity = Mathf.Sqrt(velocity);
+        rigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
+        //}
+
+        // Is already jumping?
+        //if (anim.GetBool("salto"))
+        //{
+        // Keep forward movement while in the air.
+        //if (!behaviourManager.IsGrounded() && !isColliding && behaviourManager.GetTempLockStatus())
+        //{
+        //    behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
+        //}
+        // Has landed?
+            if (rigidBody.velocity.y < 0)
+            {
+                //behaviourManager.GetAnim.SetBool(groundedBool, true);
+                // Change back player friction to default.
+                GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
+                GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
+                // Set jump related parameters.
+                //jump = false;
+                anim.SetBool(salto, false);
+                //behaviourManager.UnlockTempBehaviour(this.behaviourCode);
+            }
+        //}
+    }
+
+    //private void RemoveVerticalVelocity(Rigidbody rigidBody)
+    //{
+    //    Vector3 horizontalVelocity = behaviourManager.GetRigidBody.velocity;
+    //        horizontalVelocity.y = 0;
+    //  behaviourManager.GetRigidBody.velocity = horizontalVelocity;
+    //}
 }
+
+
