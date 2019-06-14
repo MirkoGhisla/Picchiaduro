@@ -9,9 +9,11 @@ public class comandiG1 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
+
+    public float altezzaSalto;
     public GameObject target;
 
-    public bool stoColpendo = false;
+    bool stoColpendo = false;
     public static bool colpito = false;
 
     void Start()
@@ -40,7 +42,7 @@ public class comandiG1 : MonoBehaviour
             if (Input.GetKey(KeyCode.A) && !stoColpendo)
             {
                 anim.SetBool("corre", true);
-                transform.Translate(0, 0, -0.9f);
+                transform.Translate(0, 0, -1.3f);
 
             }
             else if (Input.GetKeyUp(KeyCode.A))
@@ -63,7 +65,7 @@ public class comandiG1 : MonoBehaviour
                 }
             }
             if (Input.GetKeyDown(KeyCode.W))
-                anim.SetTrigger(salto);
+                JumpManagement();
         }
     }
 
@@ -75,5 +77,55 @@ public class comandiG1 : MonoBehaviour
     public void fineColpo()
     {
         stoColpendo = false;
+    }
+
+    void JumpManagement()
+    {
+
+        Rigidbody rigidBody = GetComponent<Rigidbody>();
+        // Start a new jump.
+
+        // Set jump related parameters.
+        //behaviourManager.LockTempBehaviour(this.behaviourCode);
+        //behaviourManager.GetAnim.SetBool(salto, true);
+        // Is a locomotion jump?
+        //if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
+        //{
+        // Temporarily change player friction to pass through obstacles.
+        anim.SetBool("salto", true);
+        GetComponent<BoxCollider>().material.dynamicFriction = 0f;
+        GetComponent<BoxCollider>().material.staticFriction = 0f;
+        // Remove vertical velocity to avoid "super jumps" on slope ends.
+        //RemoveVedrticalVelocity();
+        Vector3 horizontalVelocity = rigidBody.velocity;
+        horizontalVelocity.y = 0;
+        rigidBody.velocity = horizontalVelocity;
+        // Set jump vertical impulse velocity.
+        float velocity = 4f * Mathf.Abs(Physics.gravity.y) * altezzaSalto;
+        velocity = Mathf.Sqrt(velocity);
+        rigidBody.AddForce(Vector3.up * velocity, ForceMode.VelocityChange);
+        //}
+
+        // Is already jumping?
+        //if (anim.GetBool("salto"))
+        //{
+        // Keep forward movement while in the air.
+        //if (!behaviourManager.IsGrounded() && !isColliding && behaviourManager.GetTempLockStatus())
+        //{
+        //    behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
+        //}
+        // Has landed?
+        if (rigidBody.velocity.y < 0)
+        {
+            //behaviourManager.GetAnim.SetBool(groundedBool, true);
+            // Change back player friction to default.
+            GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
+            GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
+            // Set jump related parameters.
+            //jump = false;
+            anim.SetBool(salto, false);
+            //behaviourManager.UnlockTempBehaviour(this.behaviourCode);
+        }
+        //}
     }
 }

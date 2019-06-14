@@ -9,7 +9,7 @@ public class comandiG2 : MonoBehaviour
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
 
-    public float altezzaSalto = 1.5f;
+    public float altezzaSalto;
     public GameObject target;
 
     bool stoColpendo = false;
