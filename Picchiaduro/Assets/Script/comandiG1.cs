@@ -6,11 +6,13 @@ public class comandiG1 : MonoBehaviour
 {
 
     Animator anim;
+
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
 
     public float altezzaSalto;
+
     public GameObject target;
 
     bool stoColpendo = false;
@@ -30,25 +32,33 @@ public class comandiG1 : MonoBehaviour
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
-
-            if (Input.GetKey(KeyCode.D) && !stoColpendo)
+            if (!stoColpendo)
             {
-                anim.SetBool("corre", true);
-                transform.Translate(0, 0, +1.3f);
+                if (Input.GetKey(KeyCode.D))
+                {
+                    anim.SetBool("corre", true);
+                    transform.Translate(0, 0, +1.3f);
+
+                }
+                else if (Input.GetKeyUp(KeyCode.D))
+                    anim.SetBool("corre", false);
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    anim.SetBool("parata", true);
+                    transform.Translate(0, 0, -0.8f);
+
+                }
+                else if (Input.GetKeyUp(KeyCode.A))
+                    anim.SetBool("parata", false);
+
+                if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+                {
+                    isGrounded = false;
+                    JumpManagement();
+                }
 
             }
-            else if (Input.GetKeyUp(KeyCode.D))
-                anim.SetBool("corre", false);
-
-            if (Input.GetKey(KeyCode.A) && !stoColpendo)
-            {
-                anim.SetBool("parata", true);
-                transform.Translate(0, 0, -0.8f);
-
-            }
-            else if (Input.GetKeyUp(KeyCode.A))
-                anim.SetBool("parata", false);
-
 
             if (!colpito)
             {
@@ -65,11 +75,8 @@ public class comandiG1 : MonoBehaviour
                     stoColpendo = true;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.W) && isGrounded)
-            {
-                isGrounded = false;
-                JumpManagement();     
-            }
+
+
         }
 
         if(transform.position.y<= 2.8050)

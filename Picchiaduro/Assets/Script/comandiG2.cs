@@ -5,11 +5,13 @@ using UnityEngine;
 public class comandiG2 : MonoBehaviour
 {
     Animator anim;
+
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
 
     public float altezzaSalto;
+
     public GameObject target;
 
     bool stoColpendo = false;
@@ -29,23 +31,32 @@ public class comandiG2 : MonoBehaviour
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
-            if (Input.GetKey(KeyCode.LeftArrow) && !stoColpendo)
+            if (!stoColpendo)
             {
-                anim.SetBool("corre", true);
-                transform.Translate(0, 0, +1.3f);
+                if (Input.GetKey(KeyCode.LeftArrow) && !stoColpendo)
+                {
+                    anim.SetBool("corre", true);
+                    transform.Translate(0, 0, +1.3f);
 
+                }
+                else if (Input.GetKeyUp(KeyCode.LeftArrow))
+                    anim.SetBool("corre", false);
+
+                if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
+                {
+                    anim.SetBool("parata", true);
+                    transform.Translate(0, 0, -0.8f);
+
+                }
+                else if (Input.GetKeyUp(KeyCode.RightArrow))
+                    anim.SetBool("parata", false);
+
+                if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+                {
+                    isGrounded = false;
+                    JumpManagement();
+                }
             }
-            else if (Input.GetKeyUp(KeyCode.LeftArrow))
-                anim.SetBool("corre", false);
-
-            if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
-            {
-                anim.SetBool("parata", true);
-                transform.Translate(0, 0, -0.8f);
-
-            }
-            else if (Input.GetKeyUp(KeyCode.RightArrow))
-                anim.SetBool("parata", false);
 
             if (!colpito)
             {
@@ -63,13 +74,7 @@ public class comandiG2 : MonoBehaviour
                     stoColpendo = true;
                 }
             }
-
-            if (Input.GetKeyDown(KeyCode.UpArrow)&&isGrounded)
-            {
-                isGrounded = false;
-                JumpManagement();
-            }
-                
+     
         }
 
         if (transform.position.y <= 2.8050)
