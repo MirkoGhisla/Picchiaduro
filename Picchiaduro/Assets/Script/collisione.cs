@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class collisione : MonoBehaviour
 {
-
     void OnCollisionEnter(Collision collision)
     {
 

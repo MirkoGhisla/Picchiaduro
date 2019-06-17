@@ -9,6 +9,7 @@ public class comandiG2 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
+    int vieneColpito = Animator.StringToHash("vieneColpito");
 
     public float altezzaSalto;
 
@@ -73,8 +74,10 @@ public class comandiG2 : MonoBehaviour
                     GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
-            }
-     
+            }else if(colpito)
+            {
+                anim.SetTrigger(vieneColpito);
+            }     
         }
 
         if (transform.position.y <= 2.8050)
@@ -130,7 +133,7 @@ public class comandiG2 : MonoBehaviour
         //    behaviourManager.GetRigidBody.AddForce(transform.forward * jumpIntertialForce * Physics.gravity.magnitude * sprintSpeed, ForceMode.Acceleration);
         //}
         // Has landed?
-            if (rigidBody.velocity.y < 0)
+            if (rigidBody.velocity.y <= 0)
             {
                 //behaviourManager.GetAnim.SetBool(groundedBool, true);
                 // Change back player friction to default.
