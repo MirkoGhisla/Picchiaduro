@@ -41,7 +41,7 @@ public class comandiG2 : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
             {
                 anim.SetBool("parata", true);
-                transform.Translate(0, 0, -0.9f);
+                transform.Translate(0, 0, -0.8f);
 
             }
             else if (Input.GetKeyUp(KeyCode.RightArrow))
