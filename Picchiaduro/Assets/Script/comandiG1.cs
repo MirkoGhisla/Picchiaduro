@@ -23,41 +23,79 @@ public class comandiG1 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         GetComponent<Rigidbody>().freezeRotation = true;
+
     }
-    
+
     // Update is called once per frame
     void Update()
     {
-       
+        if (transform.position.x > target.transform.position.x)
+        {
+            GetComponent<Rigidbody>().freezeRotation = false;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x,270,transform.eulerAngles.z);
+            Debug.Log("DIOCANE");
+            GetComponent<Rigidbody>().freezeRotation = true;
+        }
+        else
+        {
+            GetComponent<Rigidbody>().freezeRotation = false;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
+            Debug.Log("DIOPorco");
+            GetComponent<Rigidbody>().freezeRotation = true;
+        }
+
+
+
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
-            
-                if (Input.GetKey(KeyCode.D) && !stoColpendo)
+
+            if (Input.GetKey(KeyCode.D) && !stoColpendo)
+            {
+                if (transform.eulerAngles.y.Equals(90f))
                 {
                     anim.SetBool("corre", true);
                     transform.Translate(0, 0, +1.3f);
-
                 }
-                else if (Input.GetKeyUp(KeyCode.D))
-                    anim.SetBool("corre", false);
-
-                if (Input.GetKey(KeyCode.A) && !stoColpendo)
+                else
                 {
                     anim.SetBool("parata", true);
                     transform.Translate(0, 0, -0.8f);
-
                 }
-                else if (Input.GetKeyUp(KeyCode.A))
+            }
+            else if (Input.GetKeyUp(KeyCode.D))
+            {
+
+                    anim.SetBool("corre", false);
                     anim.SetBool("parata", false);
+            }
 
-                if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+            if (Input.GetKey(KeyCode.A) && !stoColpendo)
+            {
+                if (transform.eulerAngles.y.Equals(90f))
                 {
-                    isGrounded = false;
-                    JumpManagement();
+                    anim.SetBool("parata", true);
+                    transform.Translate(0, 0, -0.8f);
                 }
+                else
+                {
+                    anim.SetBool("corre", true);
+                    transform.Translate(0, 0, +1.3f);
+                }
+            }
+            else if (Input.GetKeyUp(KeyCode.A))
+            {
+                     anim.SetBool("parata", false);
+                    anim.SetBool("corre", false);
+            }
 
-            
+            if (Input.GetKeyDown(KeyCode.W) && isGrounded)
+            {
+                isGrounded = false;
+                JumpManagement();
+            }
+
+
 
             if (!colpito)
             {
@@ -78,7 +116,7 @@ public class comandiG1 : MonoBehaviour
 
         }
 
-        if(transform.position.y<= 2.8050)
+        if (transform.position.y <= 2.8050)
         {
             isGrounded = true;
         }

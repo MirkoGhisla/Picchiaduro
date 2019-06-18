@@ -28,28 +28,64 @@ public class comandiG2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (transform.position.x < target.transform.position.x - 10)
+        {
+            GetComponent<Rigidbody>().freezeRotation = false;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
+            Debug.Log("DIOCANE");
+            GetComponent<Rigidbody>().freezeRotation = true;
+        }
+        else
+        {
+            GetComponent<Rigidbody>().freezeRotation = false;
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270, transform.eulerAngles.z);
+            Debug.Log("DIOPorco");
+            GetComponent<Rigidbody>().freezeRotation = true;
+        }
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
-            
+
             if (Input.GetKey(KeyCode.LeftArrow) && !stoColpendo)
             {
-                anim.SetBool("corre", true);
-                transform.Translate(0, 0, +1.3f);
+                if (transform.eulerAngles.y.Equals(270f))
+                {
+                    anim.SetBool("corre", true);
+                    transform.Translate(0, 0, +1.3f);
+                }
+                else
+                {
+                    anim.SetBool("parata", true);
+                    transform.Translate(0, 0, -0.8f);
+                }
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftArrow))
-                anim.SetBool("corre", false);
+            {
+
+                    anim.SetBool("corre", false);
+                    anim.SetBool("parata", false);
+            }
 
             if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
             {
-                anim.SetBool("parata", true);
-                transform.Translate(0, 0, -0.8f);
+                if (transform.eulerAngles.y.Equals(270f))
+                {
+                    anim.SetBool("parata", true);
+                    transform.Translate(0, 0, -0.8f);
+                }
+                else
+                {
+                    anim.SetBool("corre", true);
+                    transform.Translate(0, 0, +1.3f);
+                }
 
             }
             else if (Input.GetKeyUp(KeyCode.RightArrow))
-                anim.SetBool("parata", false);
+            {
+                    anim.SetBool("parata", false);
+                    anim.SetBool("corre", false);
+            }
 
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
             {

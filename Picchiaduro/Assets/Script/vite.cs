@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class vite : MonoBehaviour
@@ -36,6 +37,7 @@ public class vite : MonoBehaviour
             animG1.SetBool("perdi", true);
             animG2.SetBool("vinci", true);
             g2win.SetActive(true);
+            StartCoroutine(BackToTheMenu());
         }
 
         else if (G2currentHealth <= 0)
@@ -44,6 +46,13 @@ public class vite : MonoBehaviour
             animG2.SetBool("perdi", true);
             animG1.SetBool("vinci", true);
             g1win.SetActive(true);
+            StartCoroutine(BackToTheMenu());
         }
+    }
+
+    IEnumerator BackToTheMenu()
+    {
+        yield return new WaitForSeconds(4.0f);
+        SceneManager.LoadScene("Menu");
     }
 }
