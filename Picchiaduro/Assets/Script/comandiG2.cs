@@ -8,7 +8,7 @@ public class comandiG2 : MonoBehaviour
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
-    int salto = Animator.StringToHash("salto");
+    int saltoBello = Animator.StringToHash("saltoBello");
     int vieneColpito = Animator.StringToHash("vieneColpito");
 
     public float altezzaSalto;
@@ -32,32 +32,31 @@ public class comandiG2 : MonoBehaviour
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
-            if (!stoColpendo)
+            
+            if (Input.GetKey(KeyCode.LeftArrow) && !stoColpendo)
             {
-                if (Input.GetKey(KeyCode.LeftArrow) && !stoColpendo)
-                {
-                    anim.SetBool("corre", true);
-                    transform.Translate(0, 0, +1.3f);
+                anim.SetBool("corre", true);
+                transform.Translate(0, 0, +1.3f);
 
-                }
-                else if (Input.GetKeyUp(KeyCode.LeftArrow))
-                    anim.SetBool("corre", false);
-
-                if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
-                {
-                    anim.SetBool("parata", true);
-                    transform.Translate(0, 0, -0.8f);
-
-                }
-                else if (Input.GetKeyUp(KeyCode.RightArrow))
-                    anim.SetBool("parata", false);
-
-                if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
-                {
-                    isGrounded = false;
-                    JumpManagement();
-                }
             }
+            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+                anim.SetBool("corre", false);
+
+            if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
+            {
+                anim.SetBool("parata", true);
+                transform.Translate(0, 0, -0.8f);
+
+            }
+            else if (Input.GetKeyUp(KeyCode.RightArrow))
+                anim.SetBool("parata", false);
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+            {
+                isGrounded = false;
+                JumpManagement();
+            }
+
 
             if (!colpito)
             {
@@ -74,10 +73,12 @@ public class comandiG2 : MonoBehaviour
                     GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
-            }else if(colpito)
-            {
-                anim.SetTrigger(vieneColpito);
-            }     
+            }
+            
+            //else if(colpito)
+            //{
+            //    anim.SetTrigger(vieneColpito);
+            //}     
         }
 
         if (transform.position.y <= 2.8050)
@@ -110,7 +111,7 @@ public class comandiG2 : MonoBehaviour
         //if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
         //{
         // Temporarily change player friction to pass through obstacles.
-        anim.SetBool("salto", true);
+        anim.SetTrigger(saltoBello);
         GetComponent<BoxCollider>().material.dynamicFriction = 0f;
         GetComponent<BoxCollider>().material.staticFriction = 0f;
         // Remove vertical velocity to avoid "super jumps" on slope ends.
@@ -137,11 +138,10 @@ public class comandiG2 : MonoBehaviour
             {
                 //behaviourManager.GetAnim.SetBool(groundedBool, true);
                 // Change back player friction to default.
-                GetComponent<CapsuleCollider>().material.dynamicFriction = 0.6f;
-                GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
+                GetComponent<BoxCollider>().material.dynamicFriction = 0.6f;
+                GetComponent<BoxCollider>().material.staticFriction = 0.6f;
                 // Set jump related parameters.
                 //jump = false;
-                anim.SetBool(salto, false);
                 //behaviourManager.UnlockTempBehaviour(this.behaviourCode);
             }
         //}

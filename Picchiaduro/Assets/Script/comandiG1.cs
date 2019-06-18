@@ -32,9 +32,8 @@ public class comandiG1 : MonoBehaviour
 
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
-            if (!stoColpendo)
-            {
-                if (Input.GetKey(KeyCode.D))
+            
+                if (Input.GetKey(KeyCode.D) && !stoColpendo)
                 {
                     anim.SetBool("corre", true);
                     transform.Translate(0, 0, +1.3f);
@@ -43,7 +42,7 @@ public class comandiG1 : MonoBehaviour
                 else if (Input.GetKeyUp(KeyCode.D))
                     anim.SetBool("corre", false);
 
-                if (Input.GetKey(KeyCode.A))
+                if (Input.GetKey(KeyCode.A) && !stoColpendo)
                 {
                     anim.SetBool("parata", true);
                     transform.Translate(0, 0, -0.8f);
@@ -58,7 +57,7 @@ public class comandiG1 : MonoBehaviour
                     JumpManagement();
                 }
 
-            }
+            
 
             if (!colpito)
             {
@@ -109,6 +108,7 @@ public class comandiG1 : MonoBehaviour
         //{
         // Temporarily change player friction to pass through obstacles.
         anim.SetBool("salto", true);
+
         GetComponent<BoxCollider>().material.dynamicFriction = 0f;
         GetComponent<BoxCollider>().material.staticFriction = 0f;
         // Remove vertical velocity to avoid "super jumps" on slope ends.
@@ -139,7 +139,7 @@ public class comandiG1 : MonoBehaviour
             GetComponent<CapsuleCollider>().material.staticFriction = 0.6f;
             // Set jump related parameters.
             //jump = false;
-            anim.SetBool(salto, false);
+            anim.SetBool("salto", false);
 
             //behaviourManager.UnlockTempBehaviour(this.behaviourCode);
         }
