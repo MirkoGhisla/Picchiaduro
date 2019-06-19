@@ -5,7 +5,7 @@ using UnityEngine;
 public class comandiG1 : MonoBehaviour
 {
 
-    Animator anim;
+    public static Animator anim;
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
@@ -35,14 +35,12 @@ public class comandiG1 : MonoBehaviour
         {
             GetComponent<Rigidbody>().freezeRotation = false;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x,270,transform.eulerAngles.z);
-            Debug.Log("DIOCANE");
             GetComponent<Rigidbody>().freezeRotation = true;
         }
         else
         {
             GetComponent<Rigidbody>().freezeRotation = false;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
-            Debug.Log("DIOPorco");
             GetComponent<Rigidbody>().freezeRotation = true;
         }
 
@@ -132,6 +130,11 @@ public class comandiG1 : MonoBehaviour
     public void fineColpo()
     {
         stoColpendo = false;
+    }
+
+    public static void vieneColpito()
+    {
+        anim.SetTrigger("vieneColpito");
     }
 
     void JumpManagement()

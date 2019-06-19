@@ -40,12 +40,14 @@ public class collisione : MonoBehaviour
 
     IEnumerator G1nonColpito()
     {
+        comandiG1.vieneColpito();
         yield return new WaitForSeconds(0.5f);
         comandiG1.colpito = false;
     }
 
     IEnumerator G2nonColpito()
     {
+        comandiG2.vieneColpito();
         yield return new WaitForSeconds(0.5f);
         comandiG2.colpito = false;
     }

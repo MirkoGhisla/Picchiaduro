@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class comandiG2 : MonoBehaviour
 {
-    Animator anim;
+    public static Animator anim;
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int saltoBello = Animator.StringToHash("saltoBello");
-    int vieneColpito = Animator.StringToHash("vieneColpito");
+    //int vieneColpito = Animator.StringToHash("vieneColpito");
 
     public float altezzaSalto, velCorsa, velParata;         //vel parata corrisponde alla velocità di movimento all'indietro
 
@@ -32,14 +32,12 @@ public class comandiG2 : MonoBehaviour
         {
             GetComponent<Rigidbody>().freezeRotation = false;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
-            Debug.Log("DIOCANE");
             GetComponent<Rigidbody>().freezeRotation = true;
         }
         else
         {
             GetComponent<Rigidbody>().freezeRotation = false;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 270, transform.eulerAngles.z);
-            Debug.Log("DIOPorco");
             GetComponent<Rigidbody>().freezeRotation = true;
         }
 
@@ -87,6 +85,7 @@ public class comandiG2 : MonoBehaviour
                     anim.SetBool("corre", false);
             }
 
+
             if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
             {
                 isGrounded = false;
@@ -96,6 +95,7 @@ public class comandiG2 : MonoBehaviour
 
             if (!colpito)
             {
+                
                 if (Input.GetKeyDown(KeyCode.L) && !stoColpendo)
                 {
                     anim.SetTrigger(pugno);
@@ -110,11 +110,10 @@ public class comandiG2 : MonoBehaviour
                     stoColpendo = true;
                 }
             }
-            
-            //else if(colpito)
+            //else if (colpito)
             //{
             //    anim.SetTrigger(vieneColpito);
-            //}     
+            //}
         }
 
         if (transform.position.y <= 2.8050)
@@ -132,6 +131,11 @@ public class comandiG2 : MonoBehaviour
     public void fineColpo()
     {
         stoColpendo = false;
+    }
+
+    public static void vieneColpito()
+    {
+        anim.SetTrigger("vieneColpito");
     }
 
     void JumpManagement()
