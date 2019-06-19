@@ -15,6 +15,7 @@ public class vite : MonoBehaviour
 
     public GameObject g1, g2;
     public GameObject g1win, g2win;
+    public GameObject afterFightCanvas;
 
     void Start()
     {
@@ -37,7 +38,8 @@ public class vite : MonoBehaviour
             animG1.SetBool("perdi", true);
             animG2.SetBool("vinci", true);
             g2win.SetActive(true);
-            StartCoroutine(BackToTheMenu());
+            enabled = false;
+            StartCoroutine(AfterFight());
         }
 
         else if (G2currentHealth <= 0)
@@ -46,13 +48,16 @@ public class vite : MonoBehaviour
             animG2.SetBool("perdi", true);
             animG1.SetBool("vinci", true);
             g1win.SetActive(true);
-            StartCoroutine(BackToTheMenu());
+            StartCoroutine(AfterFight());
+            enabled = false;
         }
     }
 
-    IEnumerator BackToTheMenu()
+    IEnumerator AfterFight()
     {
         yield return new WaitForSeconds(4.0f);
-        SceneManager.LoadScene("Menu");
+        g1win.SetActive(false);
+        g2win.SetActive(false);
+        SceneManager.LoadScene("AfterFight", LoadSceneMode.Additive);
     }
 }
