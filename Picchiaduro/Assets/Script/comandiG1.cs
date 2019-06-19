@@ -11,7 +11,9 @@ public class comandiG1 : MonoBehaviour
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
 
-    public float altezzaSalto;
+
+    
+    public float altezzaSalto, velCorsa, velParata;     // velParata corrisponde alla velocità di movimento all'indietro
 
     public GameObject target;
 
@@ -55,12 +57,12 @@ public class comandiG1 : MonoBehaviour
                 if (transform.eulerAngles.y.Equals(90f))
                 {
                     anim.SetBool("corre", true);
-                    transform.Translate(0, 0, +1.3f);
+                    transform.Translate(0, 0, +velCorsa);
                 }
                 else
                 {
                     anim.SetBool("parata", true);
-                    transform.Translate(0, 0, -0.8f);
+                    transform.Translate(0, 0, -velParata);
                 }
             }
             else if (Input.GetKeyUp(KeyCode.D))
@@ -75,12 +77,12 @@ public class comandiG1 : MonoBehaviour
                 if (transform.eulerAngles.y.Equals(90f))
                 {
                     anim.SetBool("parata", true);
-                    transform.Translate(0, 0, -0.8f);
+                    transform.Translate(0, 0, -velParata);
                 }
                 else
                 {
                     anim.SetBool("corre", true);
-                    transform.Translate(0, 0, +1.3f);
+                    transform.Translate(0, 0, +velCorsa);
                 }
             }
             else if (Input.GetKeyUp(KeyCode.A))

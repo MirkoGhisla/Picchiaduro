@@ -11,7 +11,7 @@ public class comandiG2 : MonoBehaviour
     int saltoBello = Animator.StringToHash("saltoBello");
     int vieneColpito = Animator.StringToHash("vieneColpito");
 
-    public float altezzaSalto;
+    public float altezzaSalto, velCorsa, velParata;         //vel parata corrisponde alla velocità di movimento all'indietro
 
     public GameObject target;
 
@@ -51,12 +51,12 @@ public class comandiG2 : MonoBehaviour
                 if (transform.eulerAngles.y.Equals(270f))
                 {
                     anim.SetBool("corre", true);
-                    transform.Translate(0, 0, +1.3f);
+                    transform.Translate(0, 0, +velCorsa);
                 }
                 else
                 {
                     anim.SetBool("parata", true);
-                    transform.Translate(0, 0, -0.8f);
+                    transform.Translate(0, 0, -velParata);
                 }
 
             }
@@ -72,12 +72,12 @@ public class comandiG2 : MonoBehaviour
                 if (transform.eulerAngles.y.Equals(270f))
                 {
                     anim.SetBool("parata", true);
-                    transform.Translate(0, 0, -0.8f);
+                    transform.Translate(0, 0, -velParata);
                 }
                 else
                 {
                     anim.SetBool("corre", true);
-                    transform.Translate(0, 0, +1.3f);
+                    transform.Translate(0, 0, +velCorsa);
                 }
 
             }
