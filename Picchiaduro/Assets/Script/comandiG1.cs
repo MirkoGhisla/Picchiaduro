@@ -26,7 +26,11 @@ public class comandiG1 : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         GetComponent<Rigidbody>().freezeRotation = true;
+        target = GameObject.FindGameObjectWithTag("G2");
 
+        altezzaSalto = 40;
+        velCorsa = 3;
+        velParata = 1.8f;
     }
 
     // Update is called once per frame

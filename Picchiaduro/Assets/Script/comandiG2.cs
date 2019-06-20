@@ -8,7 +8,7 @@ public class comandiG2 : MonoBehaviour
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
-    int saltoBello = Animator.StringToHash("saltoBello");
+    int salto = Animator.StringToHash("salto");
     int calcioPesante = Animator.StringToHash("calcioPesante");
     //int vieneColpito = Animator.StringToHash("vieneColpito");
 
@@ -24,6 +24,10 @@ public class comandiG2 : MonoBehaviour
     {
         GetComponent<Rigidbody>().freezeRotation = true;
         anim = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("G1");
+        altezzaSalto = 40;
+        velCorsa = 3;
+        velParata = 1.8f;
     }
 
     // Update is called once per frame
@@ -157,7 +161,7 @@ public class comandiG2 : MonoBehaviour
         //if (behaviourManager.GetAnim.GetFloat(speedFloat) > 0.1)
         //{
         // Temporarily change player friction to pass through obstacles.
-        anim.SetTrigger(saltoBello);
+        anim.SetTrigger(salto);
         GetComponent<BoxCollider>().material.dynamicFriction = 0f;
         GetComponent<BoxCollider>().material.staticFriction = 0f;
         // Remove vertical velocity to avoid "super jumps" on slope ends.

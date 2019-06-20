@@ -13,14 +13,18 @@ public class vite : MonoBehaviour
 
     Animator animG1, animG2;
 
-    public GameObject g1, g2;
+    GameObject g1, g2;
     public GameObject g1win, g2win;
-    public GameObject afterFightCanvas;
+
 
     void Start()
     {
+        g1 = GameObject.FindGameObjectWithTag("G1");
+        g2 = GameObject.FindGameObjectWithTag("G2");
+
         animG1 = g1.GetComponent<Animator>();
         animG2 = g2.GetComponent<Animator>();
+
 
         G1currentHealth = startingHealth;
         G2currentHealth = startingHealth;

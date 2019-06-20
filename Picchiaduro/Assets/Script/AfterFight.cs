@@ -8,12 +8,12 @@ public class AfterFight : MonoBehaviour
 
     public void Rematch()
     {
-        SceneManager.LoadScene("Fuji");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void CharacterSel()
     {
-        //TO DO
+        SceneManager.LoadScene("CharacterSel");
     }
 
     public void StageSel()
