@@ -10,6 +10,7 @@ public class comandiG1 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
+    int calcioPesante = Animator.StringToHash("calcioPesante");
 
 
     
@@ -97,23 +98,27 @@ public class comandiG1 : MonoBehaviour
 
 
 
-            if (!colpito)
+            if (!colpito && !stoColpendo)
             {
-                if (Input.GetKeyDown(KeyCode.V) && !stoColpendo)
+                if (Input.GetKeyDown(KeyCode.V))
                 {
                     anim.SetTrigger(pugno);
                     GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
-                if (Input.GetKeyDown(KeyCode.C) && !stoColpendo)
+                if (Input.GetKeyDown(KeyCode.B))
                 {
                     anim.SetTrigger(calcio);
                     GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    anim.SetTrigger(calcioPesante);
+                    GetComponent<SphereCollider>().enabled = true;
+                    stoColpendo = true;
+                }
             }
-
-
         }
 
         if (transform.position.y <= 2.8050)

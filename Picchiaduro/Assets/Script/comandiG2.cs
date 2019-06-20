@@ -9,6 +9,7 @@ public class comandiG2 : MonoBehaviour
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int saltoBello = Animator.StringToHash("saltoBello");
+    int calcioPesante = Animator.StringToHash("calcioPesante");
     //int vieneColpito = Animator.StringToHash("vieneColpito");
 
     public float altezzaSalto, velCorsa, velParata;         //vel parata corrisponde alla velocità di movimento all'indietro
@@ -102,10 +103,15 @@ public class comandiG2 : MonoBehaviour
                     GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
-
                 if (Input.GetKeyDown(KeyCode.K) && !stoColpendo)
                 {
                     anim.SetTrigger(calcio);
+                    GetComponent<SphereCollider>().enabled = true;
+                    stoColpendo = true;
+                }
+                if (Input.GetKeyDown(KeyCode.O))
+                {
+                    anim.SetTrigger(calcioPesante);
                     GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
