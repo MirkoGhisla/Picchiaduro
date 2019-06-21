@@ -15,6 +15,9 @@ public class StageSel : MonoBehaviour
             case "Fuji":
                 SceneManager.LoadScene("Fuji");
                 break;
+            case "Forest":
+                SceneManager.LoadScene("Forest");
+                break;
         }
     }
 }

@@ -53,6 +53,7 @@ public class CharcaterSel : MonoBehaviour
             case "BlackWhite":
                 CharSelManager.BlackWhiteG2 = true;
                 g2HasSelected = true;
+                SceneManager.LoadScene("StageSel");
                 break;
 
         }

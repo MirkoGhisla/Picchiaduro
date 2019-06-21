@@ -17,7 +17,9 @@ public class LoadChar : MonoBehaviour
         }
         else if (CharSelManager.BlackWhiteG1 == true)
         {
-
+            GameObject G1 = Instantiate(BlackWhite, spawnPoint1.transform.position, spawnPoint1.transform.rotation);
+            G1.tag = "G1";
+            G1.AddComponent<comandiG1>();
         }
 
 
@@ -30,7 +32,9 @@ public class LoadChar : MonoBehaviour
         }
         else if (CharSelManager.BlackWhiteG2 == true)
         {
-
+            GameObject G2 = Instantiate(BlackWhite, spawnPoint2.transform.position, spawnPoint2.transform.rotation);
+            G2.tag = "G2";
+            G2.AddComponent<comandiG2>();
         }
     }
 
