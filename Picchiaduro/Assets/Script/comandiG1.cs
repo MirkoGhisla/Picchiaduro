@@ -11,9 +11,10 @@ public class comandiG1 : MonoBehaviour
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
     int calcioPesante = Animator.StringToHash("calcioPesante");
+    int pugnoPesante = Animator.StringToHash("pugnoPesante");
 
 
-    
+
     public float altezzaSalto, velCorsa, velParata;     // velParata corrisponde alla velocità di movimento all'indietro
 
     public GameObject target;
@@ -45,7 +46,7 @@ public class comandiG1 : MonoBehaviour
             GetComponent<Rigidbody>().freezeRotation = true;
         }
         else
-        {
+        {   
             GetComponent<Rigidbody>().freezeRotation = false;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 90, transform.eulerAngles.z);
             GetComponent<Rigidbody>().freezeRotation = true;
@@ -122,6 +123,12 @@ public class comandiG1 : MonoBehaviour
                 {
                     danno = 200;
                     anim.SetTrigger(calcioPesante);
+                    stoColpendo = true;
+                }
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    danno = 200;
+                    anim.SetTrigger(pugnoPesante);
                     stoColpendo = true;
                 }
             }
