@@ -104,19 +104,19 @@ public class comandiG2 : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L) && !stoColpendo)
                 {
                     anim.SetTrigger(pugno);
-                    GetComponent<SphereCollider>().enabled = true;
+                    //GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(KeyCode.K) && !stoColpendo)
                 {
                     anim.SetTrigger(calcio);
-                    GetComponent<SphereCollider>().enabled = true;
+                    //GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(KeyCode.O))
                 {
                     anim.SetTrigger(calcioPesante);
-                    GetComponent<SphereCollider>().enabled = true;
+                    //GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
             }
