@@ -26,7 +26,7 @@ public class collisione : MonoBehaviour
                 {
                     //g2.GetComponent<SphereCollider>().enabled = false;
                     comandiG1.colpito = true;
-                    vite.G1currentHealth -= 100;
+                    vite.G1currentHealth -= comandiG2.danno;
                     StartCoroutine(G1nonColpito());
                 }
             }
@@ -39,7 +39,7 @@ public class collisione : MonoBehaviour
                 {
                     //g1.GetComponent<SphereCollider>().enabled = false;
                     comandiG2.colpito = true;
-                    vite.G2currentHealth -= 100;
+                    vite.G2currentHealth -= comandiG1.danno;
                     StartCoroutine(G2nonColpito());
                 }
             }

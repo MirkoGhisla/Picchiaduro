@@ -5,7 +5,7 @@ using UnityEngine;
 public class comandiG1 : MonoBehaviour
 {
 
-    public static Animator anim;
+    private static Animator anim;
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
@@ -21,6 +21,8 @@ public class comandiG1 : MonoBehaviour
     bool stoColpendo = false;
     public static bool colpito = false;
     bool isGrounded = true;
+
+    public static int danno = 0;
 
     void Start()
     {
@@ -106,20 +108,20 @@ public class comandiG1 : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.V))
                 {
-                    //GetComponent<SphereCollider>().enabled = true;
+                    danno = 100;
                     anim.SetTrigger(pugno);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(KeyCode.B))
                 {
-                    //GetComponent<SphereCollider>().enabled = true;
+                    danno = 100;
                     anim.SetTrigger(calcio);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(KeyCode.G))
                 {
+                    danno = 200;
                     anim.SetTrigger(calcioPesante);
-                    //GetComponent<SphereCollider>().enabled = true;
                     stoColpendo = true;
                 }
             }
