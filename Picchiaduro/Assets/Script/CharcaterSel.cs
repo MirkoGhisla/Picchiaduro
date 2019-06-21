@@ -37,7 +37,12 @@ public class CharcaterSel : MonoBehaviour
                 title1.SetActive(false);
                 title2.SetActive(true);
                 break;
-
+            case "Trollaire":
+                CharSelManager.TrollaireG1 = true;
+                g1HasSelected = true;
+                title1.SetActive(false);
+                title2.SetActive(true);
+                break;
         }
     }
 
@@ -55,7 +60,11 @@ public class CharcaterSel : MonoBehaviour
                 g2HasSelected = true;
                 SceneManager.LoadScene("StageSel");
                 break;
-
+            case "Trollaire":
+                CharSelManager.TrollaireG2 = true;
+                g2HasSelected = true;
+                SceneManager.LoadScene("StageSel");
+                break;
         }
     }
 }
