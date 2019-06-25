@@ -42,7 +42,7 @@ public class LoadChar : MonoBehaviour
             G2.tag = "G2";
             G2.AddComponent<comandiG2>();
         }
-        else if (CharSelManager.TrollaireG1 == true)
+        else if (CharSelManager.TrollaireG2 == true)
         {
             GameObject G2 = Instantiate(Trollaire, spawnPoint2.transform.position, spawnPoint2.transform.rotation);
             G2.tag = "G2";
