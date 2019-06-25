@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("CharacterSel");
     }
 
+    public void OptionsMenu()
+    {
+        SceneManager.LoadScene("Options");
+    }
     public void QuitGame()
     {
         Application.Quit();
