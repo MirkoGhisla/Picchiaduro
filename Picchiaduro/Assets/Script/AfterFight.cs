@@ -14,6 +14,7 @@ public class AfterFight : MonoBehaviour
     public void CharacterSel()
     {
         SceneManager.LoadScene("CharacterSel");
+        CharSelManager.TuttoFalzo();
     }
 
     public void StageSel()

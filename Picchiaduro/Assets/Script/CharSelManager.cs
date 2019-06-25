@@ -22,4 +22,15 @@ public class CharSelManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
+    public static void TuttoFalzo()
+    {
+        GhostG1 = false;
+        BlackWhiteG1 = false;
+        TrollaireG1 = false;
+
+        GhostG2 = false;
+        BlackWhiteG2 = false;
+        TrollaireG2 = false;
+    }
+
 }
