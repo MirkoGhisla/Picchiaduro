@@ -73,6 +73,7 @@
     <Compile Include="Assets\Script\collisione.cs" />
     <Compile Include="Assets\Script\comandiG1.cs" />
     <Compile Include="Assets\Script\comandiG2.cs" />
+    <Compile Include="Assets\Script\ControlsManager.cs" />
     <Compile Include="Assets\Script\ControlsMenu.cs" />
     <Compile Include="Assets\Script\Inizioh.cs" />
     <Compile Include="Assets\Script\LoadChar.cs" />

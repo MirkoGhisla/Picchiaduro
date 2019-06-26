@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class comandiG2 : MonoBehaviour
 {
+    private KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2;
+
     private static Animator anim;
 
     int pugno = Animator.StringToHash("pugno");
@@ -28,6 +30,12 @@ public class comandiG2 : MonoBehaviour
         GetComponent<Rigidbody>().freezeRotation = true;
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("G1");
+
+        if (ControlsManager.g2Keyb1)
+            Keyb1();
+        else if (ControlsManager.g2Keyb2)
+            Keyb2();
+
         altezzaSalto = 40;
         velCorsa = 3;
         velParata = 1.8f;
@@ -52,7 +60,7 @@ public class comandiG2 : MonoBehaviour
         if (!anim.GetBool("vinci") && !anim.GetBool("perdi"))
         {
 
-            if (Input.GetKey(KeyCode.LeftArrow) && !stoColpendo)
+            if (Input.GetKey(left) && !stoColpendo)
             {
                 if (transform.eulerAngles.y.Equals(270f))
                 {
@@ -66,14 +74,14 @@ public class comandiG2 : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyUp(KeyCode.LeftArrow))
+            else if (Input.GetKeyUp(left))
             {
 
                     anim.SetBool("corre", false);
                     anim.SetBool("parata", false);
             }
 
-            if (Input.GetKey(KeyCode.RightArrow) && !stoColpendo)
+            if (Input.GetKey(right) && !stoColpendo)
             {
                 if (transform.eulerAngles.y.Equals(270f))
                 {
@@ -87,14 +95,14 @@ public class comandiG2 : MonoBehaviour
                 }
 
             }
-            else if (Input.GetKeyUp(KeyCode.RightArrow))
+            else if (Input.GetKeyUp(right))
             {
                     anim.SetBool("parata", false);
                     anim.SetBool("corre", false);
             }
 
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+            if (Input.GetKeyDown(jump) && isGrounded)
             {
                 isGrounded = false;
                 JumpManagement();
@@ -104,25 +112,25 @@ public class comandiG2 : MonoBehaviour
             if (!colpito && !stoColpendo)
             {
                 
-                if (Input.GetKeyDown(KeyCode.L))
+                if (Input.GetKeyDown(normalAtk1))
                 {
                     danno = 100;
                     anim.SetTrigger(pugno);
                     stoColpendo = true;
                 }
-                if (Input.GetKeyDown(KeyCode.K))
+                if (Input.GetKeyDown(normalAtk2))
                 {
                     danno = 100;
                     anim.SetTrigger(calcio);
                     stoColpendo = true;
                 }
-                if (Input.GetKeyDown(KeyCode.O))
+                if (Input.GetKeyDown(pwrdAtk2))
                 {
                     danno = 200;
                     anim.SetTrigger(calcioPesante);
                     stoColpendo = true;
                 }
-                if (Input.GetKeyDown(KeyCode.I))
+                if (Input.GetKeyDown(pwrdAtk1))
                 {
                     danno = 200;
                     anim.SetTrigger(pugnoPesante);
@@ -212,6 +220,28 @@ public class comandiG2 : MonoBehaviour
     //        horizontalVelocity.y = 0;
     //  behaviourManager.GetRigidBody.velocity = horizontalVelocity;
     //}
+
+    private void Keyb1()
+    {
+        right = KeyCode.D;
+        left = KeyCode.A;
+        jump = KeyCode.W;
+        normalAtk1 = KeyCode.V;
+        normalAtk2 = KeyCode.B;
+        pwrdAtk1 = KeyCode.F;
+        pwrdAtk2 = KeyCode.G;
+    }
+
+    private void Keyb2()
+    {
+        right = KeyCode.RightArrow;
+        left = KeyCode.LeftArrow;
+        jump = KeyCode.UpArrow;
+        normalAtk1 = KeyCode.K;
+        normalAtk2 = KeyCode.L;
+        pwrdAtk1 = KeyCode.I;
+        pwrdAtk2 = KeyCode.O;
+    }
 }
 
 
