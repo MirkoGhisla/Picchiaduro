@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ControlsManager : MonoBehaviour
 {
-    public static bool g1Keyb1, g1Keyb2, g1Joys1, g1Joys2;
-    public static bool g2Keyb1, g2Keyb2, g2Joys1, g2Joys2;
+    public static bool g1Keyb1, g1Keyb2, g1Keyb3, g1Joys1, g1Joys2;
+    public static bool g2Keyb1, g2Keyb2, g2Keyb3, g2Joys1, g2Joys2;
 
     public static int controlsG1;
     public static int controlsG2;
@@ -13,6 +13,7 @@ public class ControlsManager : MonoBehaviour
     {
         g1Keyb1 = true;
         g1Keyb2 = false;
+        g1Keyb3 = false;
         g1Joys1 = false;
         g1Joys2 = false;
         controlsG1 = 1;
@@ -20,6 +21,7 @@ public class ControlsManager : MonoBehaviour
 
         g2Keyb1 = false;
         g2Keyb2 = true;
+        g2Keyb3 = false;
         g2Joys1 = false;
         g2Joys2 = false;
         controlsG2 = 2;
@@ -33,6 +35,7 @@ public class ControlsManager : MonoBehaviour
     {
         g1Keyb1 = true;
         g1Keyb2 = false;
+        g1Keyb3 = false;
         g1Joys1 = false;
         g1Joys2 = false;
         controlsG1 = 1;
@@ -41,26 +44,39 @@ public class ControlsManager : MonoBehaviour
     {
         g1Keyb1 = false;
         g1Keyb2 = true;
+        g1Keyb3 = false;
         g1Joys1 = false;
         g1Joys2 = false;
         controlsG1 = 2;
+    }
+
+    public static void G1keyboard3()
+    {
+        g1Keyb1 = false;
+        g1Keyb2 = false;
+        g1Keyb3 = true;
+        g1Joys1 = false;
+        g1Joys2 = false;
+        controlsG1 = 3;
     }
     public static void G1joystick1()
     {
         g1Keyb1 = false;
         g1Keyb2 = false;
+        g1Keyb3 = false;
         g1Joys1 = true;
         g1Joys2 = false;
-        controlsG1 = 3;
+        controlsG1 = 4;
     }
 
     public static void G1joystick2()
     {
         g1Keyb1 = false;
         g1Keyb2 = false;
+        g1Keyb3 = false;
         g1Joys1 = false;
         g1Joys2 = true;
-        controlsG1 = 4;
+        controlsG1 = 5;
     }
 
 
@@ -69,6 +85,7 @@ public class ControlsManager : MonoBehaviour
     {
         g2Keyb1 = true;
         g2Keyb2 = false;
+        g2Keyb3 = false;
         g2Joys1 = false;
         g2Joys2 = false;
         controlsG2 = 1;
@@ -77,25 +94,38 @@ public class ControlsManager : MonoBehaviour
     {
         g2Keyb1 = false;
         g2Keyb2 = true;
+        g2Keyb3 = false;
         g2Joys1 = false;
         g2Joys2 = false;
         controlsG2 = 2;
+    }
+
+    public static void G2keyboard3()
+    {
+        g2Keyb1 = false;
+        g2Keyb2 = false;
+        g2Keyb3 = true;
+        g2Joys1 = false;
+        g2Joys2 = false;
+        controlsG2 = 3;
     }
     public static void G2joystick1()
     {
         g2Keyb1 = false;
         g2Keyb2 = false;
+        g2Keyb3 = false;
         g2Joys1 = true;
         g2Joys2 = false;
-        controlsG2 = 3;
+        controlsG2 = 4;
     }
 
     public static void G2joystick2()
     {
         g2Keyb1 = false;
         g2Keyb2 = false;
+        g2Keyb3 = false;
         g2Joys1 = false;
         g2Joys2 = true;
-        controlsG2 = 4;
+        controlsG2 = 5;
     }
 }

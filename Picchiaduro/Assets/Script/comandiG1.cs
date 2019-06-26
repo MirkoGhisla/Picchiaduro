@@ -36,6 +36,8 @@ public class comandiG1 : MonoBehaviour
             Keyb1();
         else if (ControlsManager.g1Keyb2)
             Keyb2();
+        else if (ControlsManager.g1Keyb3)
+            Keyb3();
 
         altezzaSalto = 40;
         velCorsa = 3;
@@ -241,5 +243,17 @@ public class comandiG1 : MonoBehaviour
         pwrdAtk1 = KeyCode.I;
         pwrdAtk2 = KeyCode.O;
         mossaFinale = KeyCode.P;
+    }
+
+    private void Keyb3()
+    {
+        right = KeyCode.RightArrow;
+        left = KeyCode.LeftArrow;
+        jump = KeyCode.UpArrow;
+        normalAtk1 = KeyCode.Keypad2;
+        normalAtk2 = KeyCode.Keypad3;
+        pwrdAtk1 = KeyCode.Keypad5;
+        pwrdAtk2 = KeyCode.Keypad6;
+        mossaFinale = KeyCode.Keypad9;
     }
 }
