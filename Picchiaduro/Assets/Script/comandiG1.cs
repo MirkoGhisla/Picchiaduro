@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class comandiG1 : MonoBehaviour
 {
-    private KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2;
+    private KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale;
 
     private static Animator anim;
 
@@ -136,6 +136,13 @@ public class comandiG1 : MonoBehaviour
                     anim.SetTrigger(pugnoPesante);
                     stoColpendo = true;
                 }
+                if (Input.GetKeyDown(mossaFinale) && stamina.MossaFinaleG1)
+                {
+                    stamina.MossaFinaleG1 = false;
+                    danno = 666;
+
+                    stoColpendo = true;
+                }
             }
         }
 
@@ -221,6 +228,7 @@ public class comandiG1 : MonoBehaviour
         normalAtk2 = KeyCode.B;
         pwrdAtk1 = KeyCode.F;
         pwrdAtk2 = KeyCode.G;
+        mossaFinale = KeyCode.H;
     }
 
     private void Keyb2()
@@ -232,5 +240,6 @@ public class comandiG1 : MonoBehaviour
         normalAtk2 = KeyCode.L;
         pwrdAtk1 = KeyCode.I;
         pwrdAtk2 = KeyCode.O;
+        mossaFinale = KeyCode.P;
     }
 }
