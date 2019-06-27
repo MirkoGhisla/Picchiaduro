@@ -24,7 +24,7 @@ public class collisione : MonoBehaviour
                     return;
                 else
                 {
-                    //g2.GetComponent<SphereCollider>().enabled = false;
+                    comandiG2.PlaySound(comandiG2.suono);
                     comandiG1.colpito = true;
                     vite.G1currentHealth -= comandiG2.danno;
                     stamina.G1currentStamina += 100;
@@ -41,6 +41,7 @@ public class collisione : MonoBehaviour
                 {
                     //g1.GetComponent<SphereCollider>().enabled = false;
                     comandiG2.colpito = true;
+                    comandiG1.PlaySound(comandiG1.suono);
                     vite.G2currentHealth -= comandiG1.danno;
                     stamina.G2currentStamina += 100;
                     stamina.G1currentStamina += 50;

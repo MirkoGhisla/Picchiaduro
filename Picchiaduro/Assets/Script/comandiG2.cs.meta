@@ -3,7 +3,13 @@ guid: 47a072a4f85a01846946b8d3585bccf7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - suoni: {instanceID: 0}
+  - sdPugno: {fileID: 8300000, guid: f5965fcd953da004eaa9ad4cb0e00aca, type: 3}
+  - sdCalcio: {fileID: 8300000, guid: 16abe1b56b4070943b3ee067e874b206, type: 3}
+  - sdPugnoPesante: {fileID: 8300000, guid: d512b71ae84a13a4384aedf1b8fa0626, type: 3}
+  - sdCalcioPesante: {fileID: 8300000, guid: 7c99193aeef1e3d44bb1907c862cdd3f, type: 3}
+  - target: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

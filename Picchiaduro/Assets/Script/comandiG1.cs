@@ -8,8 +8,8 @@ public class comandiG1 : MonoBehaviour
 
     static Animator anim;
 
-    public AudioSource suoni;
-    public AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante;
+    public static AudioSource suoni;
+    public static AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante;
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
@@ -18,7 +18,7 @@ public class comandiG1 : MonoBehaviour
     int pugnoPesante = Animator.StringToHash("pugnoPesante");
     int magiaMossaSpeciale = Animator.StringToHash("magiaMossaSpeciale");
 
-
+    public static string suono;
     public float altezzaSalto, velCorsa, velParata;     // velParata corrisponde alla velocità di movimento all'indietro
 
     public GameObject target;
@@ -34,6 +34,12 @@ public class comandiG1 : MonoBehaviour
         anim = GetComponent<Animator>();
         GetComponent<Rigidbody>().freezeRotation = true;
         target = GameObject.FindGameObjectWithTag("G2");
+        suoni = GameObject.FindGameObjectWithTag("Camera").GetComponent<AudioSource>();
+
+        sdPugno = GameObject.FindGameObjectWithTag("sdPugno").GetComponent<AudioSource>().clip;
+        sdCalcio = GameObject.FindGameObjectWithTag("sdCalcio").GetComponent<AudioSource>().clip;
+        sdPugnoPesante = GameObject.FindGameObjectWithTag("sdPugnoPesante").GetComponent<AudioSource>().clip;
+        sdCalcioPesante = GameObject.FindGameObjectWithTag("sdCalcioPesante").GetComponent<AudioSource>().clip;
 
         if (ControlsManager.g1Keyb1)
             Keyb1();
@@ -120,28 +126,28 @@ public class comandiG1 : MonoBehaviour
             {
                 if (Input.GetKeyDown(normalAtk1))
                 {
-                    suoni.PlayOneShot(sdPugno);
+                    suono = "pugno";
                     danno = 100;
                     anim.SetTrigger(pugno);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(normalAtk2))
                 {
-                    suoni.PlayOneShot(sdCalcio);
+                    suono = "calcio";
                     danno = 100;
                     anim.SetTrigger(calcio);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(pwrdAtk2))
                 {
-                    suoni.PlayOneShot(sdCalcioPesante);
+                    suono = "calcioForte";
                     danno = 200;
                     anim.SetTrigger(calcioPesante);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(pwrdAtk1))
                 {
-                    suoni.PlayOneShot(sdPugnoPesante);
+                    suono = "pugnoForte";
                     danno = 200;
                     anim.SetTrigger(pugnoPesante);
                     stoColpendo = true;
@@ -263,5 +269,24 @@ public class comandiG1 : MonoBehaviour
         pwrdAtk1 = KeyCode.Keypad5;
         pwrdAtk2 = KeyCode.Keypad6;
         mossaFinale = KeyCode.Keypad9;
+    }
+
+    public static void PlaySound(string suono)
+    {
+        switch (suono)
+        {
+            case "pugno":
+                suoni.PlayOneShot(sdPugno);
+                break;
+            case "calcio":
+                suoni.PlayOneShot(sdCalcio);
+                break;
+            case "pugnoForte":
+                suoni.PlayOneShot(sdPugnoPesante);
+                break;
+            case "calcioForte":
+                suoni.PlayOneShot(sdCalcioPesante);
+                break;
+        }
     }
 }
