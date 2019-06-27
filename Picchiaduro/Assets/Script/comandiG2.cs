@@ -8,6 +8,9 @@ public class comandiG2 : MonoBehaviour
 
     private static Animator anim;
 
+    public AudioSource suoni;
+    public AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante;
+
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
     int salto = Animator.StringToHash("salto");
@@ -43,7 +46,7 @@ public class comandiG2 : MonoBehaviour
         velCorsa = 3;
         velParata = 1.8f;
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -117,24 +120,28 @@ public class comandiG2 : MonoBehaviour
                 
                 if (Input.GetKeyDown(normalAtk1))
                 {
+                    suoni.PlayOneShot(sdPugno);
                     danno = 100;
                     anim.SetTrigger(pugno);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(normalAtk2))
                 {
+                    suoni.PlayOneShot(sdCalcio);
                     danno = 100;
                     anim.SetTrigger(calcio);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(pwrdAtk2))
                 {
+                    suoni.PlayOneShot(sdCalcioPesante);
                     danno = 200;
                     anim.SetTrigger(calcioPesante);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(pwrdAtk1))
                 {
+                    suoni.PlayOneShot(sdPugnoPesante);
                     danno = 200;
                     anim.SetTrigger(pugnoPesante);
                     stoColpendo = true;

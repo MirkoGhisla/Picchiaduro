@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class comandiG1 : MonoBehaviour
 {
-    private KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale;
+    KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale;
 
-    private static Animator anim;
+    static Animator anim;
+
+    public AudioSource suoni;
+    public AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante;
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
@@ -89,6 +92,7 @@ public class comandiG1 : MonoBehaviour
             {
                 if (transform.eulerAngles.y.Equals(90f))
                 {
+                    
                     anim.SetBool("parata", true);
                     transform.Translate(0, 0, -velParata);
                 }
@@ -116,24 +120,28 @@ public class comandiG1 : MonoBehaviour
             {
                 if (Input.GetKeyDown(normalAtk1))
                 {
+                    suoni.PlayOneShot(sdPugno);
                     danno = 100;
                     anim.SetTrigger(pugno);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(normalAtk2))
                 {
+                    suoni.PlayOneShot(sdCalcio);
                     danno = 100;
                     anim.SetTrigger(calcio);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(pwrdAtk2))
                 {
+                    suoni.PlayOneShot(sdCalcioPesante);
                     danno = 200;
                     anim.SetTrigger(calcioPesante);
                     stoColpendo = true;
                 }
                 if (Input.GetKeyDown(pwrdAtk1))
                 {
+                    suoni.PlayOneShot(sdPugnoPesante);
                     danno = 200;
                     anim.SetTrigger(pugnoPesante);
                     stoColpendo = true;
