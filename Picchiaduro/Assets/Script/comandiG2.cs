@@ -13,6 +13,7 @@ public class comandiG2 : MonoBehaviour
     int salto = Animator.StringToHash("salto");
     int calcioPesante = Animator.StringToHash("calcioPesante");
     int pugnoPesante = Animator.StringToHash("pugnoPesante");
+    int magiaMossaSpeciale = Animator.StringToHash("magiaMossaSpeciale");
     //int vieneColpito = Animator.StringToHash("vieneColpito");
 
     public float altezzaSalto, velCorsa, velParata;         //vel parata corrisponde alla velocità di movimento all'indietro
@@ -142,7 +143,7 @@ public class comandiG2 : MonoBehaviour
                 {
                     stamina.MossaFinaleG2 = false;
                     danno = 666;
-
+                    anim.SetTrigger(magiaMossaSpeciale);
                     stoColpendo = true;
                 }
             }

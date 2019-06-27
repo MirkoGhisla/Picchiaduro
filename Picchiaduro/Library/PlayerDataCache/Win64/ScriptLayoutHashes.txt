@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/Mirk0/Desktop/gioco/Picchiaduro.exe
+C:/Users/CorsiMariano/Desktop/giocoBuild/Picchiaduro.exe
 SceneListBegin?
 Assets/Scenes/Start.unity
 Assets/Scenes/Menu.unity

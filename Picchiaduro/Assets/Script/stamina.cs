@@ -33,11 +33,11 @@ public class stamina : MonoBehaviour
         G1StaminaSlider.value = G1currentStamina;
         G2StaminaSlider.value = G2currentStamina;
 
-        if (G1currentStamina >= 700)
+        if (G1currentStamina >= 1000)
         {
             MossaFinaleG1 = true;
         }
-        else if (G2currentStamina >= 700)
+        if (G2currentStamina >= 1000)
         {
             MossaFinaleG2 = true;
         }
