@@ -67,4 +67,20 @@ public class CharcaterSel : MonoBehaviour
                 break;
         }
     }
+
+    public void GoBack()
+    {
+        if (!g1HasSelected)
+        {
+            CharSelManager.TuttoFalzo();
+            SceneManager.LoadScene("Menu");
+        }
+        else if(g1HasSelected)
+        {
+            title2.SetActive(false);
+            title1.SetActive(true);
+            g1HasSelected = false;
+            CharSelManager.TuttoFalzo();
+        }
+    }
 }

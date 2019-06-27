@@ -20,4 +20,9 @@ public class StageSel : MonoBehaviour
                 break;
         }
     }
+
+    public void GoBack()
+    {
+        SceneManager.LoadScene("CharacterSel");
+    }
 }

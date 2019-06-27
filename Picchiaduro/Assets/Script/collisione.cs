@@ -21,7 +21,7 @@ public class collisione : MonoBehaviour
             if (tag == "G1")
             {
                 if (GetComponent<Animator>().GetBool("parata"))
-                    vite.G1currentHealth = vite.G1currentHealth;
+                    return;
                 else
                 {
                     //g2.GetComponent<SphereCollider>().enabled = false;
@@ -36,7 +36,7 @@ public class collisione : MonoBehaviour
             if (tag == "G2")
             {
                 if (GetComponent<Animator>().GetBool("parata"))
-                    vite.G2currentHealth = vite.G2currentHealth;
+                    return;
                 else
                 {
                     //g1.GetComponent<SphereCollider>().enabled = false;
