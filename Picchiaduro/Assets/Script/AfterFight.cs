@@ -25,5 +25,6 @@ public class AfterFight : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("Menu");
+        CharSelManager.TuttoFalzo();
     }
 }

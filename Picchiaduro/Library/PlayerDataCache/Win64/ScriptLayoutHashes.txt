@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/CorsiMariano/Desktop/giocoBuild/Picchiaduro.exe
+C:/Users/Mirk0/Desktop/BAFfighters/BAFfighters.exe
 SceneListBegin?
 Assets/Scenes/Start.unity
 Assets/Scenes/Menu.unity
@@ -10,6 +10,7 @@ Assets/Scenes/StageSel.unity
 Assets/Scenes/CharacterSel.unity
 Assets/Scenes/Fuji.unity
 Assets/Scenes/Forest.unity
+Assets/Scenes/Pausa.unity
 Assets/Scenes/AfterFight.unity
 SceneListEnd?
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
@@ -64,7 +65,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 0fd6822f6177297bd0eb4d83cc7a9030 UnityEngine.UI.dll:UnityEngine.UI.ToggleGroup
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Inizioh
+095be3c6e80f281884b8f5da8bd04708 Assembly-CSharp.dll:.Inizioh
 98ad81e9f689a492509f07e75b810aaa Unity.TextMeshPro.dll:TMPro.TMP_InputField
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
@@ -125,6 +126,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Pausa
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 4d16cfbaa8e821a2b370e80844a0e9bc Assembly-CSharp.dll:TMPro.Examples.Benchmark03
 0f9a66e89fd01d14b4839f7c8d9cd597 Assembly-CSharp.dll:.comandiG2
