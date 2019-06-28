@@ -79,6 +79,7 @@
     <Compile Include="Assets\Script\LoadChar.cs" />
     <Compile Include="Assets\Script\MainMenu.cs" />
     <Compile Include="Assets\Script\Options.cs" />
+    <Compile Include="Assets\Script\Pausa.cs" />
     <Compile Include="Assets\Script\StageSel.cs" />
     <Compile Include="Assets\Script\stamina.cs" />
     <Compile Include="Assets\Script\vite.cs" />

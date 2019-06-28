@@ -1,15 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class comandiG1 : MonoBehaviour
 {
-    KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale;
+    KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale, pausa;
 
     static Animator anim;
 
     public static AudioSource suoni;
-    public static AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante;
+    public static AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante, sdSpeciale;
 
     int pugno = Animator.StringToHash("pugno");
     int calcio = Animator.StringToHash("calcio");
@@ -40,6 +41,7 @@ public class comandiG1 : MonoBehaviour
         sdCalcio = GameObject.FindGameObjectWithTag("sdCalcio").GetComponent<AudioSource>().clip;
         sdPugnoPesante = GameObject.FindGameObjectWithTag("sdPugnoPesante").GetComponent<AudioSource>().clip;
         sdCalcioPesante = GameObject.FindGameObjectWithTag("sdCalcioPesante").GetComponent<AudioSource>().clip;
+        sdSpeciale = GameObject.FindGameObjectWithTag("sdSpeciale").GetComponent<AudioSource>().clip;
 
         if (ControlsManager.g1Keyb1)
             Keyb1();
@@ -158,6 +160,9 @@ public class comandiG1 : MonoBehaviour
                     danno = 666;
                     anim.SetTrigger(magiaMossaSpeciale);
                     stoColpendo = true;
+                    stamina.G1currentStamina = 0;
+                    suono = "";
+                    suoni.PlayOneShot(sdSpeciale);
                 }
             }
         }
@@ -166,6 +171,9 @@ public class comandiG1 : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (Input.GetKey(pausa))
+            SceneManager.LoadScene("Pausa", LoadSceneMode.Additive);
     }
 
     public void aspetta()
@@ -245,6 +253,7 @@ public class comandiG1 : MonoBehaviour
         pwrdAtk1 = KeyCode.F;
         pwrdAtk2 = KeyCode.G;
         mossaFinale = KeyCode.H;
+        pausa = KeyCode.Escape;
     }
 
     private void Keyb2()
@@ -257,6 +266,7 @@ public class comandiG1 : MonoBehaviour
         pwrdAtk1 = KeyCode.I;
         pwrdAtk2 = KeyCode.O;
         mossaFinale = KeyCode.P;
+        pausa = KeyCode.Escape;
     }
 
     private void Keyb3()
@@ -269,6 +279,7 @@ public class comandiG1 : MonoBehaviour
         pwrdAtk1 = KeyCode.Keypad5;
         pwrdAtk2 = KeyCode.Keypad6;
         mossaFinale = KeyCode.Keypad9;
+        pausa = KeyCode.Escape;
     }
 
     public static void PlaySound(string suono)

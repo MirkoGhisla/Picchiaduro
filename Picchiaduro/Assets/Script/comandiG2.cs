@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class comandiG2 : MonoBehaviour
 {
-    private KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale;
+    private KeyCode right, left, jump, normalAtk1, normalAtk2, pwrdAtk1, pwrdAtk2, mossaFinale, pausa;
 
     private static Animator anim;
 
     public static AudioSource suoni;
-    public static AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante;
+    public static AudioClip sdPugno, sdCalcio, sdPugnoPesante, sdCalcioPesante, sdSpeciale;
 
     public static string suono;
 
@@ -42,6 +42,7 @@ public class comandiG2 : MonoBehaviour
         sdCalcio = GameObject.FindGameObjectWithTag("sdCalcio").GetComponent<AudioSource>().clip;
         sdPugnoPesante = GameObject.FindGameObjectWithTag("sdPugnoPesante").GetComponent<AudioSource>().clip;
         sdCalcioPesante = GameObject.FindGameObjectWithTag("sdCalcioPesante").GetComponent<AudioSource>().clip;
+        sdSpeciale = GameObject.FindGameObjectWithTag("sdSpeciale").GetComponent<AudioSource>().clip;
 
         if (ControlsManager.g2Keyb1)
             Keyb1();
@@ -160,6 +161,9 @@ public class comandiG2 : MonoBehaviour
                     danno = 666;
                     anim.SetTrigger(magiaMossaSpeciale);
                     stoColpendo = true;
+                    stamina.G2currentStamina = 0;
+                    suono = "";
+                    suoni.PlayOneShot(sdSpeciale);
                 }
             }
             //else if (colpito)
@@ -256,6 +260,7 @@ public class comandiG2 : MonoBehaviour
         pwrdAtk1 = KeyCode.F;
         pwrdAtk2 = KeyCode.G;
         mossaFinale = KeyCode.H;
+        pausa = KeyCode.Escape;
     }
 
     private void Keyb2()
@@ -268,6 +273,7 @@ public class comandiG2 : MonoBehaviour
         pwrdAtk1 = KeyCode.I;
         pwrdAtk2 = KeyCode.O;
         mossaFinale = KeyCode.P;
+        pausa = KeyCode.Escape;
     }
 
     private void Keyb3()
@@ -280,6 +286,7 @@ public class comandiG2 : MonoBehaviour
         pwrdAtk1 = KeyCode.Keypad5;
         pwrdAtk2 = KeyCode.Keypad6;
         mossaFinale = KeyCode.Keypad9;
+        pausa = KeyCode.Escape;
     }
 
     public static void PlaySound(string suono)
