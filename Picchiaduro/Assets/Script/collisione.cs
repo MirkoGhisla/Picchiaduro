@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class collisione : MonoBehaviour
 {
     GameObject g1, g2;
+    public LayerMask collisionLayer;
+    public float radius = 1f;
+
 
     void Start()
     {
@@ -13,32 +16,41 @@ public class collisione : MonoBehaviour
         g2 = GameObject.FindGameObjectWithTag("G2");
     }
 
-    void OnCollisionEnter(Collision collision)
+    void Update()
     {
+        DetectCollision();
+    }
 
-        if (collision.collider.GetType().ToString() == "UnityEngine.SphereCollider")
+    void DetectCollision()
+    {
+        
+        Collider[] hit = Physics.OverlapSphere(transform.position, radius, collisionLayer);
+        if (hit.Length > 0)
+            
         {
-            if (tag == "G1")
+            print(collisionLayer.value);
+            if (collisionLayer.value==256)
             {
-                if (GetComponent<Animator>().GetBool("parata"))
-                    return;
-                else
-                {
+                //if (GetComponent<Animator>().GetBool("parata"))
+                //    return;
+                //else
+                //{
                     comandiG2.PlaySound(comandiG2.suono);
                     comandiG1.colpito = true;
                     vite.G1currentHealth -= comandiG2.danno;
                     stamina.G1currentStamina += 100;
                     stamina.G2currentStamina += 50;
                     StartCoroutine(G1nonColpito());
-                }
+                //}
             }
-
-            if (tag == "G2")
+            int a = collisionLayer.value;
+            
+            if (a==512)
             {
-                if (GetComponent<Animator>().GetBool("parata"))
-                    return;
-                else
-                {
+               // if (GetComponent<Animator>().GetBool("parata"))
+                 ///   return;
+               // else
+                //{
                     //g1.GetComponent<SphereCollider>().enabled = false;
                     comandiG2.colpito = true;
                     comandiG1.PlaySound(comandiG1.suono);
@@ -46,7 +58,7 @@ public class collisione : MonoBehaviour
                     stamina.G2currentStamina += 100;
                     stamina.G1currentStamina += 50;
                     StartCoroutine(G2nonColpito());
-                }
+               // }
             }
 
         }
